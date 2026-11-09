@@ -1,430 +1,1364 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>НЛО — не ловите обид | Медиация без обид и судов</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    color: #1f2937;
-    background: #ffffff;
-  }
-  a { text-decoration: none; color: inherit; }
-  ul { list-style: none; }
-  img { max-width: 100%; display: block; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>НЛО — Не Ловите Обид | Служба медиации</title>
+  <meta name="description" content="Школьная служба медиации «НЛО» (Не Ловите Обид), 10 «А» класс, Санкт-Петербург. Что такое медиация, главные принципы, команда, достижения и галерея." />
+  <style>
+    :root {
+      --bg: #f4f9f5;
+      --surface: #ffffff;
+      --surface-soft: #ecf5ee;
+      --surface-tint: #e6f6ec;
+      --surface-mint: #ecfdf5;
+      --text: #0f2419;
+      --text-secondary: #2c4437;
+      --text-muted: #5b7567;
+      --border: #d7e7dc;
+      --border-dashed: #b4cebd;
+      --primary: #16804b;
+      --primary-dark: #11663b;
+      --primary-soft: rgba(22, 128, 75, 0.1);
+      --accent: #059669;
+      --accent-soft: rgba(5, 150, 105, 0.11);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+      --shadow-sm: 0 2px 10px rgba(15, 36, 25, 0.04);
+      --shadow-md: 0 12px 32px -8px rgba(15, 36, 25, 0.09);
+      --container: 1120px;
+      --nav-height: 72px;
+    }
 
-  .container { max-width: 1024px; margin: 0 auto; padding: 0 20px; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
 
-  /* Header */
-  header {
-    position: sticky;
-    top: 0;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid #e5e7eb;
-    z-index: 100;
-  }
-  .topbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 20px;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  .logo {
-    font-weight: 800;
-    font-size: 1.5rem;
-    letter-spacing: -0.5px;
-    color: #312e81;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .logo .abbr { color: #7c3aed; }
-  .logo span { color: #6b7280; font-weight: 400; font-size: 0.85rem; }
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
 
-  nav ul { display: flex; gap: 26px; }
-  nav a {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #374151;
-    transition: color 0.2s;
-  }
-  nav a:hover { color: #7c3aed; }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: all 0.2s;
-    border: none;
-    cursor: pointer;
-  }
-  .btn-primary {
-    background: #7c3aed;
-    color: #fff;
-  }
-  .btn-primary:hover { background: #6d28d9; }
-  .btn-outline {
-    background: transparent;
-    border: 2px solid #e5e7eb;
-    color: #374151;
-    margin-left: 10px;
-  }
-  .btn-outline:hover { border-color: #7c3aed; color: #7c3aed; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      color: var(--text);
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(circle at 12% 8%, rgba(22, 128, 75, 0.08) 0%, transparent 36%),
+        radial-gradient(circle at 88% 16%, rgba(16, 185, 129, 0.08) 0%, transparent 34%);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: #374151; cursor: pointer; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-  /* Hero */
-  .hero {
-    padding: 90px 20px 70px;
-    text-align: center;
-    background: linear-gradient(135deg, #f3f4f6 0%, #eef2ff 100%);
-  }
-  .hero h1 {
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    font-weight: 800;
-    color: #111827;
-    margin-bottom: 16px;
-    line-height: 1.15;
-  }
-  .hero h1 .accent { color: #7c3aed; }
-  .hero p {
-    font-size: 1.15rem;
-    color: #4b5563;
-    max-width: 640px;
-    margin: 0 auto 28px;
-  }
-  .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-  /* Section headers */
-  .section { padding: 70px 20px; }
-  .section-title {
-    text-align: center;
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
-    font-weight: 800;
-    color: #111827;
-    margin-bottom: 10px;
-  }
-  .section-desc {
-    text-align: center;
-    color: #6b7280;
-    max-width: 600px;
-    margin: 0 auto 50px;
-    font-size: 1.05rem;
-  }
+    /* Header / Navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-height);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(215, 231, 220, 0.9);
+    }
 
-  /* About */
-  .about-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
-  }
-  .card {
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    padding: 28px 22px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  }
-  .card h3 { font-size: 1.15rem; margin-bottom: 10px; color: #111827; }
-  .card p { color: #4b5563; font-size: 0.95rem; }
+    .header-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-  /* Participants */
-  .participants-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
-  }
-  .participant {
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    overflow: hidden;
-    background: #fff;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .participant:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.08); }
-  .participant-photo {
-    height: 200px;
-    background: linear-gradient(135deg, #e0e7ff, #fce7f3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    color: #7c3aed;
-    border-bottom: 1px solid #e5e7eb;
-  }
-  .participant-info { padding: 20px; }
-  .participant h3 { font-size: 1.1rem; margin-bottom: 4px; }
-  .participant .role { font-size: 0.88rem; color: #7c3aed; font-weight: 600; margin-bottom: 6px; display: block; }
-  .participant p { font-size: 0.92rem; color: #4b5563; }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
 
-  /* Achievements */
-  .achievements-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 24px;
-  }
-  .stat {
-    text-align: center;
-    padding: 32px 20px;
-    border-radius: 16px;
-    background: linear-gradient(135deg, #f3f4f6, #f5f3ff);
-    border: 1px solid #e5e7eb;
-  }
-  .stat .number {
-    font-size: clamp(1.75rem, 5vw, 2.5rem);
-    font-weight: 900;
-    color: #7c3aed;
-    margin-bottom: 6px;
-  }
-  .stat .label { color: #4b5563; font-size: 0.95rem; }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #e6f6ec 0%, #dcfce7 100%);
+      border: 1px solid #bce3c9;
+      display: grid;
+      place-items: center;
+    }
 
-  /* Gallery */
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
-  }
-  .gallery-item {
-    aspect-ratio: 4/3;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid #e5e7eb;
-    background: #e5e7eb;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    color: #6b7280;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: transform 0.2s;
-  }
-  .gallery-item:hover { transform: scale(1.02); border-color: #7c3aed; color: #7c3aed; }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
 
-  /* CTA */
-  .cta {
-    background: linear-gradient(135deg, #312e81, #4338ca);
-    color: #fff;
-    text-align: center;
-    padding: 70px 20px;
-    border-radius: 24px;
-    margin: 0 20px 40px;
-  }
-  .cta h2 { font-size: clamp(1.75rem, 4vw, 2.25rem); margin-bottom: 12px; }
-  .cta p { color: #c7c2fe; margin-bottom: 24px; font-size: 1.05rem; }
+    .brand-title {
+      font-size: 1.125rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--text);
+    }
 
-  /* Footer */
-  footer {
-    border-top: 1px solid #e5e7eb;
-    padding: 40px 20px;
-    color: #6b7280;
-    font-size: 0.9rem;
-    text-align: center;
-  }
-  footer .grid { display: flex; flex-direction: column; gap: 16px; align-items: center; }
-  footer b { color: #111827; }
+    .brand-sub {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
 
-  @media (max-width: 640px) {
-    nav { display: none; width: 100%; flex-direction: column; padding: 16px 20px; background: #fff; border-top: 1px solid #e5e7eb; }
-    nav.open { display: flex; }
-    nav ul { flex-direction: column; gap: 14px; }
-    .menu-toggle { display: block; }
-    .hero-actions { flex-direction: column; align-items: center; }
-    .btn-outline { margin-left: 0; margin-top: 10px; }
-  }
-</style>
+    .nav-list {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.925rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background: var(--surface-tint);
+      color: var(--primary-dark);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    /* Sections */
+    section {
+      scroll-margin-top: calc(var(--nav-height) + 20px);
+    }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section-alt {
+      background: rgba(255, 255, 255, 0.74);
+      border-top: 1px solid rgba(215, 231, 220, 0.75);
+      border-bottom: 1px solid rgba(215, 231, 220, 0.75);
+    }
+
+    .section-header {
+      max-width: 700px;
+      margin-bottom: 40px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--primary-dark);
+      background: var(--surface-tint);
+      margin-bottom: 14px;
+    }
+
+    .eyebrow-mint {
+      color: #065f46;
+      background: var(--surface-mint);
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 64px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .hero-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #16a34a;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4.4vw, 3.25rem);
+      line-height: 1.12;
+      margin-bottom: 16px;
+    }
+
+    .hero-acronym {
+      display: inline-block;
+      color: var(--primary);
+    }
+
+    .hero-lead {
+      margin: 0 0 28px;
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 58ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 8px 20px -6px rgba(22, 128, 75, 0.42);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface-soft);
+    }
+
+    /* Hero Visual Card */
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      background: linear-gradient(90deg, #15803d, #10b981);
+    }
+
+    .ufo-illustration {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .acronym-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .acronym-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 11px 14px;
+      border-radius: 12px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+    }
+
+    .acronym-letter {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .letter-n {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .letter-l {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .letter-o {
+      background: #ecfccb;
+      color: #3f6212;
+    }
+
+    .acronym-word {
+      font-weight: 700;
+      color: var(--text);
+      font-size: 0.98rem;
+    }
+
+    .acronym-hint {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* About Mediation */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .about-card p {
+      margin: 0 0 16px;
+      color: var(--text-secondary);
+      font-size: 1.03rem;
+    }
+
+    .about-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlights-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .highlight-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .highlight-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--surface-tint);
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .highlight-box h3 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .highlight-box p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Principles */
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .principle-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .principle-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .principle-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .principle-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      background: var(--surface-tint);
+      color: var(--primary);
+    }
+
+    .principle-card:nth-child(even) .principle-icon {
+      background: var(--surface-mint);
+      color: var(--accent);
+    }
+
+    .principle-num {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .principle-card h3 {
+      font-size: 1.18rem;
+      line-height: 1.25;
+    }
+
+    .principle-card p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+    }
+
+    .principle-note {
+      margin-top: 20px;
+      padding: 18px 24px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #e6f6ec 0%, #f0fdf4 100%);
+      border: 1px solid #bce3c9;
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+    }
+
+    .principle-note strong {
+      color: var(--text);
+    }
+
+    /* Team */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .member-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .member-card.is-curator {
+      border-color: #9ae6b4;
+      background: linear-gradient(180deg, #f3fbf6 0%, #ffffff 100%);
+    }
+
+    .member-photo-empty {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius-md);
+      background: var(--bg);
+      border: 1.5px dashed var(--border-dashed);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #789484;
+      font-size: 0.84rem;
+      font-weight: 500;
+    }
+
+    .member-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .member-role {
+      display: inline-flex;
+      align-self: flex-start;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: var(--surface-mint);
+      color: var(--accent);
+    }
+
+    .member-card.is-curator .member-role {
+      background: var(--surface-tint);
+      color: var(--primary-dark);
+    }
+
+    .member-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .member-desc-empty {
+      min-height: 82px;
+      border-radius: var(--radius-sm);
+      background: var(--bg);
+      border: 1.5px dashed var(--border-dashed);
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #789484;
+      font-size: 0.84rem;
+    }
+
+    /* Empty Showcase Sections (Achievements & Gallery) */
+    .empty-showcase {
+      background: var(--surface);
+      border: 2px dashed var(--border-dashed);
+      border-radius: var(--radius-lg);
+      padding: 56px 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 240px;
+    }
+
+    .empty-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: #789484;
+      display: grid;
+      place-items: center;
+      margin-bottom: 4px;
+    }
+
+    .empty-showcase h3 {
+      font-size: 1.12rem;
+      color: var(--text-secondary);
+    }
+
+    .empty-showcase p {
+      margin: 0;
+      max-width: 46ch;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #0d261a;
+      color: #cce3d4;
+      padding: 40px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-brand-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(167, 243, 208, 0.22);
+      display: grid;
+      place-items: center;
+    }
+
+    .footer-brand strong {
+      display: block;
+      color: #ffffff;
+      font-size: 1rem;
+    }
+
+    .footer-brand span {
+      font-size: 0.85rem;
+      color: #9cc4ad;
+    }
+
+    .footer-legal {
+      text-align: right;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: #cce3d4;
+    }
+
+    .footer-legal p {
+      margin: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav-list {
+        display: none;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        border-bottom: 1px solid var(--border);
+        padding: 12px 24px 18px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+        box-shadow: var(--shadow-md);
+      }
+
+      .nav-list.open {
+        display: flex;
+      }
+
+      .nav-link {
+        padding: 10px 14px;
+        border-radius: 10px;
+      }
+
+      .section {
+        padding: 54px 0;
+      }
+
+      .principles-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-legal {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-card,
+      .principle-card,
+      .hero-card {
+        padding: 22px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="brand" aria-label="Служба медиации НЛО — Не Ловите Обид">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 14C10 10.6863 12.6863 8 16 8C19.3137 8 22 10.6863 22 14" stroke="#16804B" stroke-width="2.2" stroke-linecap="round"/>
+            <ellipse cx="16" cy="15.5" rx="11" ry="4.5" fill="#E6F6EC" stroke="#16804B" stroke-width="2.2"/>
+            <circle cx="11.5" cy="15.5" r="1.2" fill="#10B981"/>
+            <circle cx="16" cy="15.5" r="1.2" fill="#16804B"/>
+            <circle cx="20.5" cy="15.5" r="1.2" fill="#22C55E"/>
+            <path d="M12 22.5C13.3 23.8 18.7 23.8 20 22.5" stroke="#059669" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-title">НЛО</span>
+          <span class="brand-sub">Не Ловите Обид</span>
+        </span>
+      </a>
 
-<header>
-  <div class="container topbar">
-    <a href="#" class="logo">
-      <span class="abbr">НЛО</span>
-      <span>— не ловите обид</span>
-    </a>
-    <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
-    <nav>
-      <ul>
-        <li><a href="#home">Главная</a></li>
-        <li><a href="#participants">Участники</a></li>
-        <li><a href="#achievements">Наши достижения</a></li>
-        <li><a href="#gallery">Галерея</a></li>
-      </ul>
-    </nav>
-    <a href="#contact" class="btn btn-outline">Записаться</a>
-  </div>
-</header>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+        aria-controls="main-nav"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="4" y1="7" x2="20" y2="7"></line>
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <line x1="4" y1="17" x2="20" y2="17"></line>
+        </svg>
+      </button>
 
-<section id="home" class="hero">
-  <div class="container">
-    <h1><span class="accent">НЛО</span> — не ловите обид</h1>
-    <p>Служба медиации, которая помогает сторонам конфликта договориться, сохранить отношения и урегулировать спор без суда и без давления.</p>
-    <div class="hero-actions">
-      <a href="#participants" class="btn btn-primary">Узнать о медиаторах</a>
-      <a href="#contact" class="btn btn-outline">Записаться на медиацию</a>
+      <nav aria-label="Основная навигация">
+        <ul class="nav-list" id="main-nav">
+          <li><a class="nav-link active" href="#home">Главная</a></li>
+          <li><a class="nav-link" href="#principles">Принципы</a></li>
+          <li><a class="nav-link" href="#team">Команда</a></li>
+          <li><a class="nav-link" href="#achievements">Достижения</a></li>
+          <li><a class="nav-link" href="#gallery">Галерея</a></li>
+        </ul>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
 
-<section class="section" id="about">
-  <div class="container">
-    <h2 class="section-title">Что мы делаем</h2>
-    <p class="section-desc">Медиация — это добровольный и конфиденциальный способ урегулирования конфликта с помощьюneutralного посредника.</p>
-    <div class="about-grid">
-      <div class="card">
-        <h3>🤝 Семейные споры</h3>
-        <p>Помогаем парам и родственникам восстановить общение, решить вопросы опеки и раздела имущества без судебных разбирательств.</p>
-      </div>
-      <div class="card">
-        <h3>💼 Бизнес-медиация</h3>
-        <p>Урегулирование конфликтов между партнерами, контрагентами и сотрудниками, чтобы бизнес продолжал развиваться.</p>
-      </div>
-      <div class="card">
-        <h3>🏢 Трудовые конфликты</h3>
-        <p>Разрешение споров между работником и работодателем, защита интересов обеих сторон в рамках трудового кодекса.</p>
-      </div>
-      <div class="card">
-        <h3>📍 Онлайн-медиация</h3>
-        <p>Проведение переговоров в формате видеоконференции. Удобно, конфиденциально и без необходимости личной встречи.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  <main>
+    <!-- ГЛАВНАЯ СТРАНИЦА: Герой + Что такое медиация + Главные принципы -->
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-badge">
+            <span class="hero-dot" aria-hidden="true"></span>
+            <span>Школьная служба медиации · 10 «А» класс</span>
+          </div>
+          <h1>
+            Служба медиации «НЛО»<br />
+            <span class="hero-acronym">Не Ловите Обид</span>
+          </h1>
+          <p class="hero-lead">
+            Помогаем находить общий язык в конфликтных ситуациях, превращать споры в спокойный диалог и сохранять уважительные отношения без взаимных обид и обвинений.
+          </p>
+          <div class="hero-actions">
+            <a href="#mediation" class="btn btn-primary">Что такое медиация</a>
+            <a href="#principles" class="btn btn-secondary">Главные принципы</a>
+            <a href="#team" class="btn btn-secondary">Наша команда</a>
+          </div>
+        </div>
 
-<section id="participants" class="section">
-  <div class="container">
-    <h2 class="section-title">Наши участники</h2>
-    <p class="section-desc">Опытные медиаторы, готовые помочь вам найти общий язык.</p>
-    <div class="participants-grid">
-      <div class="participant">
-        <div class="participant-photo">👩‍💼</div>
-        <div class="participant-info">
-          <span class="role">Ведущий медиатор</span>
-          <h3>Анна Сидорова</h3>
-          <p>Опыт 8 лет. Специализируется на семейных и гражданских спорах.</p>
+        <aside class="hero-card" aria-label="Значение названия НЛО">
+          <div class="ufo-illustration" aria-hidden="true">
+            <svg width="180" height="118" viewBox="0 0 180 118" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="24" r="2.5" fill="#86EFAC"/>
+              <circle cx="150" cy="22" r="2" fill="#6EE7B7"/>
+              <circle cx="158" cy="72" r="2.5" fill="#A7F3D0"/>
+              <circle cx="22" cy="80" r="2" fill="#BEF264"/>
+              <path d="M56 70L38 108H142L124 70H56Z" fill="url(#beam)" opacity="0.55"/>
+              <path d="M62 48C62 32.536 74.536 20 90 20C105.464 20 118 32.536 118 48" fill="#E6F6EC" stroke="#16804B" stroke-width="3"/>
+              <ellipse cx="90" cy="54" rx="54" ry="18" fill="#FFFFFF" stroke="#16804B" stroke-width="3"/>
+              <circle cx="66" cy="54" r="4.5" fill="#10B981"/>
+              <circle cx="90" cy="54" r="4.5" fill="#16804B"/>
+              <circle cx="114" cy="54" r="4.5" fill="#22C55E"/>
+              <path d="M76 89C83 94 97 94 104 89" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="beam" x1="90" y1="70" x2="90" y2="108" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#86EFAC"/>
+                  <stop offset="1" stop-color="#ECFDF5" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <div class="acronym-list">
+            <div class="acronym-item">
+              <span class="acronym-letter letter-n">Н</span>
+              <div>
+                <span class="acronym-word">Не</span>
+                <span class="acronym-hint">Без давления, осуждения и поиска виноватых</span>
+              </div>
+            </div>
+            <div class="acronym-item">
+              <span class="acronym-letter letter-l">Л</span>
+              <div>
+                <span class="acronym-word">Ловите</span>
+                <span class="acronym-hint">Учимся слушать и понимать друг друга</span>
+              </div>
+            </div>
+            <div class="acronym-item">
+              <span class="acronym-letter letter-o">О</span>
+              <div>
+                <span class="acronym-word">Обид</span>
+                <span class="acronym-hint">Договариваемся так, чтобы стало легче всем</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ЧТО ТАКОЕ МЕДИАЦИЯ -->
+    <section id="mediation" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">О медиации</span>
+          <h2>Что такое медиация?</h2>
+          <p class="section-subtitle">
+            Простой и безопасный способ разрешить спор мирным путём при поддержке нейтрального посредника.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card">
+            <p>
+              <strong>Медиация</strong> — это процесс переговоров, в котором третья нейтральная сторона (медиатор) помогает участникам конфликта услышать друг друга и самостоятельно прийти к взаимовыгодному соглашению.
+            </p>
+            <p>
+              В школьной службе медиации <strong>«НЛО» («Не Ловите Обид»)</strong> медиаторы помогают перевести напряжение в спокойный и честный разговор. Задача медиации — не определить, кто прав, а кто виноват, и не наказать, а восстановить доверие и найти решение, которое устроит обе стороны.
+            </p>
+            <p>
+              К нам можно обратиться в случае недопонимания, ссоры, спора между одноклассниками или напряжённых отношений — мы создаём комфортную атмосферу, где важно мнение каждого.
+            </p>
+          </div>
+
+          <div class="highlights-stack">
+            <div class="highlight-box">
+              <div class="highlight-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3>Спокойный диалог</h3>
+                <p>Каждый получает возможность высказаться без перебивания и упрёков.</p>
+              </div>
+            </div>
+
+            <div class="highlight-box">
+              <div class="highlight-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3>Без осуждения</h3>
+                <p>Встреча проходит в безопасной обстановке: без оценок, ярлыков и давления.</p>
+              </div>
+            </div>
+
+            <div class="highlight-box">
+              <div class="highlight-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <div>
+                <h3>Общее решение</h3>
+                <p>Итоговую договорённость выбирают не медиаторы, а сами участники встречи.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="participant">
-        <div class="participant-photo">👨‍💼</div>
-        <div class="participant-info">
-          <span class="role">Медиатор по бизнесу</span>
-          <h3>Михаил Козлов</h3>
-          <p>Опыт 6 лет. Помогает урегулировать коммерческие конфликты.</p>
+    </section>
+
+    <!-- ГЛАВНЫЕ ПРИНЦИПЫ МЕДИАЦИИ -->
+    <section id="principles" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow eyebrow-mint">Основа нашей работы</span>
+          <h2>Главные принципы медиации</h2>
+          <p class="section-subtitle">
+            Любая встреча в службе «НЛО» строится на четырёх ключевых принципах, обеспечивающих доверие и справедливость.
+          </p>
+        </div>
+
+        <div class="principles-grid">
+          <article class="principle-card">
+            <div class="principle-top">
+              <div class="principle-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <polyline points="16 11 18 13 22 9"></polyline>
+                </svg>
+              </div>
+              <div>
+                <span class="principle-num">Принцип 01</span>
+                <h3>Добровольность</h3>
+              </div>
+            </div>
+            <p>
+              Участие в медиации возможно только по личному согласию каждого участника. Никого нельзя принудить к встрече, а любой участник может приостановить или прекратить разговор в любой момент.
+            </p>
+          </article>
+
+          <article class="principle-card">
+            <div class="principle-top">
+              <div class="principle-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </div>
+              <div>
+                <span class="principle-num">Принцип 02</span>
+                <h3>Конфиденциальность</h3>
+              </div>
+            </div>
+            <p>
+              Всё, о чём говорится на встрече, остаётся внутри службы медиации. Информация не выносится за пределы диалога и не передаётся третьим лицам без согласия сторон.
+            </p>
+          </article>
+
+          <article class="principle-card">
+            <div class="principle-top">
+              <div class="principle-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="3" x2="12" y2="21"></line>
+                  <path d="M5 7h14"></path>
+                  <path d="M5 7l-2 6h4l-2-6z"></path>
+                  <path d="M19 7l-2 6h4l-2-6z"></path>
+                </svg>
+              </div>
+              <div>
+                <span class="principle-num">Принцип 03</span>
+                <h3>Нейтральность и беспристрастность</h3>
+              </div>
+            </div>
+            <p>
+              Медиатор не занимает ничью сторону, не судит, не оценивает поступки и не навязывает готовых советов. Он одинаково уважительно и внимательно относится к каждому участнику.
+            </p>
+          </article>
+
+          <article class="principle-card">
+            <div class="principle-top">
+              <div class="principle-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="8" cy="8" r="3"></circle>
+                  <circle cx="16" cy="8" r="3"></circle>
+                  <path d="M3 19c0-2.8 2.2-5 5-5s5 2.2 5 5"></path>
+                  <path d="M11 19c0-2.8 2.2-5 5-5s5 2.2 5 5"></path>
+                </svg>
+              </div>
+              <div>
+                <span class="principle-num">Принцип 04</span>
+                <h3>Равноправие сторон</h3>
+              </div>
+            </div>
+            <p>
+              У всех участников диалога равные права: одинаковое время для высказывания своей позиции, возможность задавать вопросы, предлагать идеи и принимать совместное решение.
+            </p>
+          </article>
+        </div>
+
+        <div class="principle-note">
+          <strong>Сотрудничество и ответственность:</strong> медиация направлена не на поиск виновных в прошлом, а на поиск взаимоприемлемого решения для будущего, за выполнение которого стороны отвечают вместе.
         </div>
       </div>
-      <div class="participant">
-        <div class="participant-photo">👩‍🏫</div>
-        <div class="participant-info">
-          <span class="role">Медиатор по трудовым спорам</span>
-          <h3>Елена Иванова</h3>
-          <p>Опыт 5 лет. Ведет переговоры между сотрудниками и работодателями.</p>
+    </section>
+
+    <!-- КОМАНДА: КУРАТОР + 7 УЧЕНИКОВ 10 «А» КЛАССА (ФОТО И ОПИСАНИЕ ОСТАВЛЕНЫ ПУСТЫМИ) -->
+    <section id="team" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Наша команда</span>
+          <h2>Команда службы медиации</h2>
+          <p class="section-subtitle">
+            Куратор и 7 учеников 10 «А» класса — участники команды «НЛО».
+          </p>
+        </div>
+
+        <!--
+          Чтобы добавить фото участника, замените блок .member-photo-empty на:
+          <img src="путь_к_фото.jpg" alt="Имя участника" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;">
+          А чтобы добавить описание, замените текст внутри .member-desc-empty.
+        -->
+        <div class="team-grid">
+          <!-- Куратор -->
+          <article class="member-card is-curator">
+            <div class="member-photo-empty" aria-label="Место для фотографии куратора">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>Фото</span>
+            </div>
+            <div class="member-meta">
+              <span class="member-role">Куратор</span>
+              <h3 class="member-title">Куратор команды</h3>
+            </div>
+            <div class="member-desc-empty" aria-label="Описание куратора пустое">
+              <span>Описание</span>
+            </div>
+          </article>
+
+          <!-- Ученик 1 -->
+          <article class="member-card">
+            <div class="member-photo-empty" aria-label="Место для фотографии ученика 1">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>Фото</span>
+            </div>
+            <div class="member-meta">
+              <span class="member-role">10 «А» класс</span>
+              <h3 class="member-title">Ученик 1</h3>
+            </div>
+            <div class="member-desc-empty" aria-label="Описание ученика 1 пустое">
+              <span>Описание</span>
+            </div>
+          </article>
+
+          <!-- Ученик 2 -->
+          <article class="member-card">
+            <div class="member-photo-empty" aria-label="Место для фотографии ученика 2">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>Фото</span>
+            </div>
+            <div class="member-meta">
+              <span class="member-role">10 «А» класс</span>
+              <h3 class="member-title">Ученик 2</h3>
+            </div>
+            <div class="member-desc-empty" aria-label="Описание ученика 2 пустое">
+              <span>Описание</span>
+            </div>
+          </article>
+
+          <!-- Ученик 3 -->
+          <article class="member-card">
+            <div class="member-photo-empty" aria-label="Место для фотографии ученика 3">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>Фото</span>
+            </div>
+            <div class="member-meta">
+              <span class="member-role">10 «А» класс</span>
+              <h3 class="member-title">Ученик 3</h3>
+            </div>
+            <div class="member-desc-empty" aria-label="Описание ученика 3 пустое">
+              <span>Описание</span>
+            </div>
+          </article>
+
+          <!-- Ученик 4 -->
+          <article class="member-card">
+            <div class="member-photo-empty" aria-label="Место для фотографии ученика 4">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>Фото</span>
+            </div>
+            <div class="member-meta">
+              <span class="member-role">10 «А» класс</span>
+              <h3 class="member-title">Ученик 4</h3>
+            </div>
+            <div class="member-desc-empty" aria-label="Описание ученика 4 пустое">
+              <span>Описание</span>
+            </div>
+          </article>
+
+          <!-- Ученик 5 -->
+          <article class="member-card">
+            <div class="member-photo-empty" aria-label="Место для фотографии ученика 5">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>Фото</span>
+            </div>
+            <div class="member-meta">
+              <span class="member-role">10 «А» класс</span>
+              <h3 class="member-title">Ученик 5</h3>
+            </div>
+            <div class="member-desc-empty" aria-label="Описание ученика 5 пустое">
+              <span>Описание</span>
+            </div>
+          </article>
+
+          <!-- Ученик 6 -->
+          <article class="member-card">
+            <div class="member-photo-empty" aria-label="Место для фотографии ученика 6">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>Фото</span>
+            </div>
+            <div class="member-meta">
+              <span class="member-role">10 «А» класс</span>
+              <h3 class="member-title">Ученик 6</h3>
+            </div>
+            <div class="member-desc-empty" aria-label="Описание ученика 6 пустое">
+              <span>Описание</span>
+            </div>
+          </article>
+
+          <!-- Ученик 7 -->
+          <article class="member-card">
+            <div class="member-photo-empty" aria-label="Место для фотографии ученика 7">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>Фото</span>
+            </div>
+            <div class="member-meta">
+              <span class="member-role">10 «А» класс</span>
+              <h3 class="member-title">Ученик 7</h3>
+            </div>
+            <div class="member-desc-empty" aria-label="Описание ученика 7 пустое">
+              <span>Описание</span>
+            </div>
+          </article>
         </div>
       </div>
-      <div class="participant">
-        <div class="participant-photo">👨‍⚖️</div>
-        <div class="participant-info">
-          <span class="role">Медиатор по бизнес-конфликтам</span>
-          <h3>Дмитрий Петров</h3>
-          <p>Опыт 7 лет. Работает с корпоративными и партнерскими спорами.</p>
+    </section>
+
+    <!-- ДОСТИЖЕНИЯ (ОСТАВЛЕНО ПУСТЫМ) -->
+    <section id="achievements" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow eyebrow-mint">Конкурсы и награды</span>
+          <h2>Достижения</h2>
+          <p class="section-subtitle">
+            Дипломы и грамоты службы медиации с конкурсов.
+          </p>
+        </div>
+
+        <!-- Здесь будут размещаться дипломы с конкурсов -->
+        <div class="empty-showcase">
+          <div class="empty-icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="6"></circle>
+              <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"></path>
+            </svg>
+          </div>
+          <h3>Раздел пока пуст</h3>
+          <p>Здесь будут размещены дипломы с конкурсов.</p>
         </div>
       </div>
+    </section>
+
+    <!-- ГАЛЕРЕЯ (ОСТАВЛЕНО ПУСТЫМ) -->
+    <section id="gallery" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Выступления и работа</span>
+          <h2>Галерея</h2>
+          <p class="section-subtitle">
+            Фотографии с наших выступлений и работы службы медиации.
+          </p>
+        </div>
+
+        <!-- Здесь будут размещаться фотографии с выступлений и работы -->
+        <div class="empty-showcase">
+          <div class="empty-icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+              <polyline points="21 15 16 10 5 21"></polyline>
+            </svg>
+          </div>
+          <h3>Раздел пока пуст</h3>
+          <p>Здесь появятся фотографии с наших выступлений и работы команды.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-badge" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 14C10 10.6863 12.6863 8 16 8C19.3137 8 22 10.6863 22 14" stroke="#86EFAC" stroke-width="2.2" stroke-linecap="round"/>
+            <ellipse cx="16" cy="15.5" rx="11" ry="4.5" stroke="#DCFCE7" stroke-width="2.2"/>
+            <circle cx="11.5" cy="15.5" r="1.2" fill="#6EE7B7"/>
+            <circle cx="16" cy="15.5" r="1.2" fill="#86EFAC"/>
+            <circle cx="20.5" cy="15.5" r="1.2" fill="#6EE7B7"/>
+          </svg>
+        </div>
+        <div>
+          <strong>Служба медиации «НЛО»</strong>
+          <span>Не Ловите Обид · 10 «А» класс</span>
+        </div>
+      </div>
+
+      <div class="footer-legal">
+        <p>Санкт-Петербург, Россия</p>
+        <p>© 2026 Служба медиации НЛО. Все права защищены.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </footer>
 
-<section id="achievements" class="section">
-  <div class="container">
-    <h2 class="section-title">Наши достижения</h2>
-    <p class="section-desc">Мы гордимся результатами нашей работы и доверием клиентов.</p>
-    <div class="achievements-grid">
-      <div class="stat">
-        <div class="number">150+</div>
-        <div class="label">урегулированных конфликтов</div>
-      </div>
-      <div class="stat">
-        <div class="number">98%</div>
-        <div class="label">сторон остались удовлетворены результатом</div>
-      </div>
-      <div class="stat">
-        <div class="number">12</div>
-        <div class="label">лет общего опыта команды в медиации</div>
-      </div>
-      <div class="stat">
-        <div class="number">500+</div>
-        <div class="label">часов проведено переговоров и сессий</div>
-      </div>
-    </div>
-  </div>
-</section>
+  <script>
+    (function () {
+      const toggle = document.querySelector(".menu-toggle");
+      const navList = document.getElementById("main-nav");
+      const navLinks = Array.from(document.querySelectorAll(".nav-link"));
 
-<section id="gallery" class="section">
-  <div class="container">
-    <h2 class="section-title">Галерея</h2>
-    <p class="section-desc">Примеры направлений, с которыми мы работаем.</p>
-    <div class="gallery-grid">
-      <div class="gallery-item" title="Семейная медиация">Семейная медиация</div>
-      <div class="gallery-item" title="Бизнес-конфликт">Бизнес-конфликт</div>
-      <div class="gallery-item" title="Трудовой спор">Трудовой спор</div>
-      <div class="gallery-item" title="Школьная медиация">Школьная медиация</div>
-      <div class="gallery-item" title="Спор между соседями">Соседи</div>
-      <div class="gallery-item" title="Онлайн-сессия">Онлайн-сессия</div>
-    </div>
-  </div>
-</section>
+      if (toggle && navList) {
+        toggle.addEventListener("click", function () {
+          const isOpen = navList.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", String(isOpen));
+        });
 
-<section class="cta" id="contact">
-  <div class="container">
-    <h2>Готовы урегулировать конфликт?</h2>
-    <p>Запишитесь на консультацию — мы свяжемся с вами в течение суток.</p>
-    <a href="/cdn-cgi/l/email-protection#3a53545c557a54565517575f5e535b4e53555414484f" class="btn btn-primary"><span class="__cf_email__" data-cfemail="2841464e476846444705454d4c41495c414746065a5d">[email&#160;protected]</span></a>
-    <a href="tel:+78120000000" class="btn btn-outline">+7 (812) 000-00-00</a>
-  </div>
-</section>
-
-<footer>
-  <div class="container grid">
-    <div><b>НЛО — не ловите обид</b></div>
-    <div>Санкт-Петербург, Россия</div>
-    <div>Медиация • Конфиденциальность • Добровольность</div>
-    <div>© 2026 Служба медиации НЛО. Все права защищены.</div>
-  </div>
-</footer>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Плавная прокрутка уже задана через CSS scroll-behavior
-  // Подсветка активной ссылки при скролле (опционально)
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('nav a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-      if (pageYOffset >= sectionTop - 200) {
-        current = section.getAttribute('id');
+        navLinks.forEach(function (link) {
+          link.addEventListener("click", function () {
+            navList.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
       }
-    });
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === '#' + current) {
-        link.classList.add('active');
-        link.style.color = '#7c3aed';
-      } else {
-        link.style.color = '';
-      }
-    });
-  });
-</script>
 
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a57ede09a909ec56',t:'MTc5NDI0ODgwMg=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a57ede09a909ec56',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
+      const sectionMap = [
+        { id: "home", href: "#home" },
+        { id: "mediation", href: "#home" },
+        { id: "principles", href: "#principles" },
+        { id: "team", href: "#team" },
+        { id: "achievements", href: "#achievements" },
+        { id: "gallery", href: "#gallery" }
+      ];
+
+      function setActive(href) {
+        navLinks.forEach(function (link) {
+          link.classList.toggle("active", link.getAttribute("href") === href);
+        });
+      }
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                const match = sectionMap.find(function (item) {
+                  return item.id === entry.target.id;
+                });
+                if (match) {
+                  setActive(match.href);
+                }
+              }
+            });
+          },
+          { rootMargin: "-30% 0px -55% 0px", threshold: 0.01 }
+        );
+
+        sectionMap.forEach(function (item) {
+          const el = document.getElementById(item.id);
+          if (el) observer.observe(el);
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
