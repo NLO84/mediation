@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>НЛО — не ловите обид | Медиация без обид и судов</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #1f2937;
+    background: #ffffff;
+  }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  img { max-width: 100%; display: block; }
+
+  .container { max-width: 1024px; margin: 0 auto; padding: 0 20px; }
+
+  /* Header */
+  header {
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #e5e7eb;
+    z-index: 100;
+  }
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .logo {
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -0.5px;
+    color: #312e81;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo .abbr { color: #7c3aed; }
+  .logo span { color: #6b7280; font-weight: 400; font-size: 0.85rem; }
+
+  nav ul { display: flex; gap: 26px; }
+  nav a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #374151;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: #7c3aed; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: #7c3aed;
+    color: #fff;
+  }
+  .btn-primary:hover { background: #6d28d9; }
+  .btn-outline {
+    background: transparent;
+    border: 2px solid #e5e7eb;
+    color: #374151;
+    margin-left: 10px;
+  }
+  .btn-outline:hover { border-color: #7c3aed; color: #7c3aed; }
+
+  .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: #374151; cursor: pointer; }
+
+  /* Hero */
+  .hero {
+    padding: 90px 20px 70px;
+    text-align: center;
+    background: linear-gradient(135deg, #f3f4f6 0%, #eef2ff 100%);
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 16px;
+    line-height: 1.15;
+  }
+  .hero h1 .accent { color: #7c3aed; }
+  .hero p {
+    font-size: 1.15rem;
+    color: #4b5563;
+    max-width: 640px;
+    margin: 0 auto 28px;
+  }
+  .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  /* Section headers */
+  .section { padding: 70px 20px; }
+  .section-title {
+    text-align: center;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 10px;
+  }
+  .section-desc {
+    text-align: center;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto 50px;
+    font-size: 1.05rem;
+  }
+
+  /* About */
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 28px 22px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .card h3 { font-size: 1.15rem; margin-bottom: 10px; color: #111827; }
+  .card p { color: #4b5563; font-size: 0.95rem; }
+
+  /* Participants */
+  .participants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+  .participant {
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .participant:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.08); }
+  .participant-photo {
+    height: 200px;
+    background: linear-gradient(135deg, #e0e7ff, #fce7f3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #7c3aed;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .participant-info { padding: 20px; }
+  .participant h3 { font-size: 1.1rem; margin-bottom: 4px; }
+  .participant .role { font-size: 0.88rem; color: #7c3aed; font-weight: 600; margin-bottom: 6px; display: block; }
+  .participant p { font-size: 0.92rem; color: #4b5563; }
+
+  /* Achievements */
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+  }
+  .stat {
+    text-align: center;
+    padding: 32px 20px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #f3f4f6, #f5f3ff);
+    border: 1px solid #e5e7eb;
+  }
+  .stat .number {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    font-weight: 900;
+    color: #7c3aed;
+    margin-bottom: 6px;
+  }
+  .stat .label { color: #4b5563; font-size: 0.95rem; }
+
+  /* Gallery */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .gallery-item {
+    aspect-ratio: 4/3;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    background: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: #6b7280;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: transform 0.2s;
+  }
+  .gallery-item:hover { transform: scale(1.02); border-color: #7c3aed; color: #7c3aed; }
+
+  /* CTA */
+  .cta {
+    background: linear-gradient(135deg, #312e81, #4338ca);
+    color: #fff;
+    text-align: center;
+    padding: 70px 20px;
+    border-radius: 24px;
+    margin: 0 20px 40px;
+  }
+  .cta h2 { font-size: clamp(1.75rem, 4vw, 2.25rem); margin-bottom: 12px; }
+  .cta p { color: #c7c2fe; margin-bottom: 24px; font-size: 1.05rem; }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid #e5e7eb;
+    padding: 40px 20px;
+    color: #6b7280;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  footer .grid { display: flex; flex-direction: column; gap: 16px; align-items: center; }
+  footer b { color: #111827; }
+
+  @media (max-width: 640px) {
+    nav { display: none; width: 100%; flex-direction: column; padding: 16px 20px; background: #fff; border-top: 1px solid #e5e7eb; }
+    nav.open { display: flex; }
+    nav ul { flex-direction: column; gap: 14px; }
+    .menu-toggle { display: block; }
+    .hero-actions { flex-direction: column; align-items: center; }
+    .btn-outline { margin-left: 0; margin-top: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container topbar">
+    <a href="#" class="logo">
+      <span class="abbr">НЛО</span>
+      <span>— не ловите обид</span>
+    </a>
+    <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
+    <nav>
+      <ul>
+        <li><a href="#home">Главная</a></li>
+        <li><a href="#participants">Участники</a></li>
+        <li><a href="#achievements">Наши достижения</a></li>
+        <li><a href="#gallery">Галерея</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="btn btn-outline">Записаться</a>
+  </div>
+</header>
+
+<section id="home" class="hero">
+  <div class="container">
+    <h1><span class="accent">НЛО</span> — не ловите обид</h1>
+    <p>Служба медиации, которая помогает сторонам конфликта договориться, сохранить отношения и урегулировать спор без суда и без давления.</p>
+    <div class="hero-actions">
+      <a href="#participants" class="btn btn-primary">Узнать о медиаторах</a>
+      <a href="#contact" class="btn btn-outline">Записаться на медиацию</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <h2 class="section-title">Что мы делаем</h2>
+    <p class="section-desc">Медиация — это добровольный и конфиденциальный способ урегулирования конфликта с помощьюneutralного посредника.</p>
+    <div class="about-grid">
+      <div class="card">
+        <h3>🤝 Семейные споры</h3>
+        <p>Помогаем парам и родственникам восстановить общение, решить вопросы опеки и раздела имущества без судебных разбирательств.</p>
+      </div>
+      <div class="card">
+        <h3>💼 Бизнес-медиация</h3>
+        <p>Урегулирование конфликтов между партнерами, контрагентами и сотрудниками, чтобы бизнес продолжал развиваться.</p>
+      </div>
+      <div class="card">
+        <h3>🏢 Трудовые конфликты</h3>
+        <p>Разрешение споров между работником и работодателем, защита интересов обеих сторон в рамках трудового кодекса.</p>
+      </div>
+      <div class="card">
+        <h3>📍 Онлайн-медиация</h3>
+        <p>Проведение переговоров в формате видеоконференции. Удобно, конфиденциально и без необходимости личной встречи.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="participants" class="section">
+  <div class="container">
+    <h2 class="section-title">Наши участники</h2>
+    <p class="section-desc">Опытные медиаторы, готовые помочь вам найти общий язык.</p>
+    <div class="participants-grid">
+      <div class="participant">
+        <div class="participant-photo">👩‍💼</div>
+        <div class="participant-info">
+          <span class="role">Ведущий медиатор</span>
+          <h3>Анна Сидорова</h3>
+          <p>Опыт 8 лет. Специализируется на семейных и гражданских спорах.</p>
+        </div>
+      </div>
+      <div class="participant">
+        <div class="participant-photo">👨‍💼</div>
+        <div class="participant-info">
+          <span class="role">Медиатор по бизнесу</span>
+          <h3>Михаил Козлов</h3>
+          <p>Опыт 6 лет. Помогает урегулировать коммерческие конфликты.</p>
+        </div>
+      </div>
+      <div class="participant">
+        <div class="participant-photo">👩‍🏫</div>
+        <div class="participant-info">
+          <span class="role">Медиатор по трудовым спорам</span>
+          <h3>Елена Иванова</h3>
+          <p>Опыт 5 лет. Ведет переговоры между сотрудниками и работодателями.</p>
+        </div>
+      </div>
+      <div class="participant">
+        <div class="participant-photo">👨‍⚖️</div>
+        <div class="participant-info">
+          <span class="role">Медиатор по бизнес-конфликтам</span>
+          <h3>Дмитрий Петров</h3>
+          <p>Опыт 7 лет. Работает с корпоративными и партнерскими спорами.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="achievements" class="section">
+  <div class="container">
+    <h2 class="section-title">Наши достижения</h2>
+    <p class="section-desc">Мы гордимся результатами нашей работы и доверием клиентов.</p>
+    <div class="achievements-grid">
+      <div class="stat">
+        <div class="number">150+</div>
+        <div class="label">урегулированных конфликтов</div>
+      </div>
+      <div class="stat">
+        <div class="number">98%</div>
+        <div class="label">сторон остались удовлетворены результатом</div>
+      </div>
+      <div class="stat">
+        <div class="number">12</div>
+        <div class="label">лет общего опыта команды в медиации</div>
+      </div>
+      <div class="stat">
+        <div class="number">500+</div>
+        <div class="label">часов проведено переговоров и сессий</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="section">
+  <div class="container">
+    <h2 class="section-title">Галерея</h2>
+    <p class="section-desc">Примеры направлений, с которыми мы работаем.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item" title="Семейная медиация">Семейная медиация</div>
+      <div class="gallery-item" title="Бизнес-конфликт">Бизнес-конфликт</div>
+      <div class="gallery-item" title="Трудовой спор">Трудовой спор</div>
+      <div class="gallery-item" title="Школьная медиация">Школьная медиация</div>
+      <div class="gallery-item" title="Спор между соседями">Соседи</div>
+      <div class="gallery-item" title="Онлайн-сессия">Онлайн-сессия</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="container">
+    <h2>Готовы урегулировать конфликт?</h2>
+    <p>Запишитесь на консультацию — мы свяжемся с вами в течение суток.</p>
+    <a href="/cdn-cgi/l/email-protection#3a53545c557a54565517575f5e535b4e53555414484f" class="btn btn-primary"><span class="__cf_email__" data-cfemail="2841464e476846444705454d4c41495c414746065a5d">[email&#160;protected]</span></a>
+    <a href="tel:+78120000000" class="btn btn-outline">+7 (812) 000-00-00</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container grid">
+    <div><b>НЛО — не ловите обид</b></div>
+    <div>Санкт-Петербург, Россия</div>
+    <div>Медиация • Конфиденциальность • Добровольность</div>
+    <div>© 2026 Служба медиации НЛО. Все права защищены.</div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Плавная прокрутка уже задана через CSS scroll-behavior
+  // Подсветка активной ссылки при скролле (опционально)
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (pageYOffset >= sectionTop - 200) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+        link.style.color = '#7c3aed';
+      } else {
+        link.style.color = '';
+      }
+    });
+  });
+</script>
+
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a57ede09a909ec56',t:'MTc5NDI0ODgwMg=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a57ede09a909ec56',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
