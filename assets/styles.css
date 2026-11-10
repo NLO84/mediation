@@ -873,7 +873,7 @@ section[id] {
   color: #e8fff1;
   border: 1px solid rgba(221, 255, 235, 0.15);
   border-radius: 999px;
-  background: rgba(3, 36, 22, 0.74);
+  background: rgba(3, 36, 22, 0.55);
   box-shadow: 0 14px 30px -18px rgba(0, 0, 0, 0.65);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -908,31 +908,23 @@ section[id] {
 .orbit__tag--four {
   right: 4%;
   bottom: 3%;
-  color: var(--lime);
-  border-color: rgba(199, 244, 111, 0.25);
-  background: rgba(23, 58, 33, 0.58);
   animation-delay: -1.2s;
 }
 .orbit__caption {
   position: absolute;
-  top: 51%;
-  right: 0;
+  bottom: -4%;
+  left: 50%;
+  z-index: 6;
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: rgba(165, 198, 177, 0.65);
-  font-size: 0.56rem;
+  gap: 10px;
+  color: rgba(165, 198, 177, 0.68);
+  font-size: 0.58rem;
   font-weight: 700;
-  letter-spacing: 0.17em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  transform: translateX(38%) rotate(90deg);
-  transform-origin: center;
-}
-.orbit__caption::before {
-  width: 25px;
-  height: 1px;
-  background: rgba(165, 198, 177, 0.4);
-  content: "";
+  white-space: nowrap;
+  transform: translateX(-50%);
 }
 
 /* Hero entrance */
@@ -952,10 +944,10 @@ section[id] {
   z-index: 4;
   overflow: hidden;
   padding: 18px 0;
-  border-top: 1px solid rgba(212, 255, 229, 0.11);
-  background: rgba(3, 34, 20, 0.76);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(214, 255, 231, 0.08);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 .marquee__track {
   display: flex;
@@ -1238,7 +1230,7 @@ section[id] {
 /* === PRINCIPLES === */
 .principles {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   color: var(--text-on-dark);
   background:
     radial-gradient(900px 700px at 92% 10%, rgba(27, 142, 102, 0.28), transparent 64%),
@@ -1262,7 +1254,7 @@ section[id] {
 }
 .principles::after {
   position: absolute;
-  right: -0.1em;
+  right: 0;
   bottom: -0.38em;
   color: transparent;
   font-family: var(--font-display);
@@ -1416,6 +1408,7 @@ section[id] {
 /* === TEAM === */
 .team {
   overflow: hidden;
+  z-index: 1;
   background: var(--cream);
 }
 .team::before {
@@ -1595,7 +1588,7 @@ section[id] {
 }
 .member-card__photo {
   width: 100%;
-  aspect-ratio: 1 / 1.07;
+  aspect-ratio: 4 / 5;
 }
 .member-card__body {
   display: flex;
@@ -2182,9 +2175,6 @@ section[id] {
     width: min(100%, 480px);
     margin-inline: auto;
   }
-  .orbit__caption {
-    display: none;
-  }
   .about-features {
     grid-template-columns: 1fr;
   }
@@ -2379,7 +2369,7 @@ section[id] {
     gap: 13px;
   }
   .member-card__photo {
-    aspect-ratio: 1 / 0.9;
+    aspect-ratio: 4 / 5;
   }
   .empty-case {
     padding: 26px 21px;
@@ -2477,6 +2467,192 @@ section[id] {
   .marquee__track {
     animation: none;
   }
+}
+
+/* =========================================================
+   ЕДИНЫЙ ЗЕЛЁНЫЙ ЦВЕТ (по образцу Firefox VPN):
+   одна сквозная градиентная заливка на всю страницу,
+   все секции прозрачные, поверхности — стеклянные.
+   ========================================================= */
+:root {
+  --ink: #f0fbf5;
+  --ink-soft: #d3ecdd;
+  --muted: #a9ccb9;
+  --forest: #052a1a;
+  --forest-2: #07391f;
+  --forest-3: #0a4a2c;
+  --emerald: #4ad79a;
+  --emerald-deep: #8ff0c2;
+  --emerald-bright: #b3f8d8;
+  --lime: #c7f46f;
+  --lime-bright: #dbff92;
+  --mint: #0b3a26;
+  --mint-soft: #0e4a30;
+  --sage: #11543a;
+  --cream: #052a1a;
+  --paper: rgba(9, 46, 29, 0.55);
+  --white: #ffffff;
+  --line: rgba(170, 228, 199, 0.2);
+  --line-strong: rgba(170, 228, 199, 0.4);
+  --line-dark: rgba(214, 255, 231, 0.14);
+  --seam-mid: #1f7452;
+  --text-on-dark: #f4fbf7;
+  --muted-on-dark: #a9cdba;
+  --shadow-card: 0 26px 70px -38px rgba(2, 20, 12, 0.8);
+}
+
+html {
+  background:
+    radial-gradient(120% 70% at 50% 104%, rgba(74, 215, 154, 0.2) 0%, transparent 60%),
+    radial-gradient(80% 50% at 0% -6%, rgba(31, 152, 101, 0.16), transparent 72%),
+    linear-gradient(180deg, #03190f 0%, #04231a 54%, #062c1d 100%);
+  background-attachment: scroll;
+}
+
+body {
+  color: var(--ink);
+  background: transparent;
+}
+
+/* Секции — прозрачные, заливка одна на всю страницу */
+.hero,
+.about,
+.principles,
+.team,
+.achievements,
+.gallery {
+  background: none;
+}
+.site-footer {
+  background: linear-gradient(180deg, rgba(10, 74, 48, 0) 0%, rgba(10, 74, 48, 0.14) 100%);
+}
+.hero::after {
+  background: linear-gradient(180deg, transparent, rgba(3, 25, 16, 0.22));
+}
+.hero__aurora--one {
+  background: #2fc27f;
+}
+.hero__aurora--two {
+  background: #9fe870;
+}
+.hero__aurora--three {
+  background: #1f9865;
+}
+.mobile-menu {
+  background: rgba(4, 30, 20, 0.96);
+}
+
+/* Стеклянные поверхности */
+.about-card,
+.process,
+.feature-card,
+.member-card,
+.empty-case,
+.diploma {
+  border-color: var(--line);
+  background: rgba(8, 42, 27, 0.52);
+  box-shadow: var(--shadow-card);
+}
+.member-card--curator {
+  border-color: rgba(199, 244, 111, 0.34);
+  background: linear-gradient(180deg, rgba(199, 244, 111, 0.13), rgba(8, 42, 27, 0.6));
+}
+.feature-card:hover,
+.member-card:hover {
+  border-color: var(--line-strong);
+  background: rgba(12, 56, 36, 0.62);
+}
+.principle {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+}
+.empty-case {
+  background:
+    radial-gradient(600px 420px at 90% 20%, rgba(74, 215, 154, 0.2), transparent 65%),
+    rgba(8, 42, 27, 0.5);
+}
+
+/* Мелкие плашки и подписи */
+.about-card__label,
+.feature-card__icon,
+.member-card__role,
+.status-pill,
+.empty-case__icon {
+  border-color: var(--line);
+  background: rgba(11, 58, 38, 0.6);
+}
+.feature-card__index,
+.member-card__class {
+  color: rgba(214, 255, 231, 0.45);
+}
+.process__step {
+  border-top-color: var(--line);
+}
+.about-card::after {
+  border-color: rgba(74, 215, 154, 0.16);
+  box-shadow: 0 0 0 30px rgba(74, 215, 154, 0.05), 0 0 0 64px rgba(74, 215, 154, 0.035);
+}
+.team::before {
+  border-color: rgba(74, 215, 154, 0.12);
+  box-shadow: 0 0 0 45px rgba(74, 215, 154, 0.03), 0 0 0 96px rgba(74, 215, 154, 0.022);
+}
+.team .section-heading {
+  grid-template-columns: 1fr;
+}
+.gallery .section-heading {
+  grid-template-columns: 1fr;
+}
+
+/* Места под фото */
+.photo-slot {
+  color: rgba(214, 255, 231, 0.5);
+  border-color: rgba(170, 228, 199, 0.32);
+  background:
+    radial-gradient(circle at 50% 33%, rgba(74, 215, 154, 0.16), transparent 38%),
+    linear-gradient(145deg, rgba(11, 58, 38, 0.72), rgba(6, 32, 21, 0.62));
+}
+.photo-slot::before,
+.photo-slot::after {
+  border-color: rgba(170, 228, 199, 0.4);
+}
+.photo-slot--dark {
+  color: rgba(214, 255, 231, 0.5);
+  border-color: rgba(214, 255, 231, 0.22);
+  background:
+    radial-gradient(circle at 50% 33%, rgba(74, 215, 154, 0.18), transparent 38%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025));
+}
+.photo-slot:has(.photo-slot__img),
+.photo-slot--filled {
+  background: #0a3a26;
+}
+.placeholder-note--light {
+  color: rgba(214, 255, 231, 0.6);
+  border-color: var(--line);
+  background: rgba(11, 58, 38, 0.5);
+}
+.placeholder-note--light::before {
+  background: rgba(170, 228, 199, 0.5);
+}
+
+/* Награды и дипломы */
+.medal-skeleton {
+  color: rgba(214, 255, 231, 0.5);
+  border-color: rgba(170, 228, 199, 0.3);
+  background: rgba(11, 58, 38, 0.4);
+}
+.medal-skeleton::before {
+  border-color: rgba(170, 228, 199, 0.4);
+  background: linear-gradient(180deg, rgba(214, 255, 231, 0.22), rgba(214, 255, 231, 0.08));
+}
+.medal-skeleton::after {
+  background: rgba(214, 255, 231, 0.22);
+  box-shadow: 0 13px 0 -1px rgba(214, 255, 231, 0.1);
+}
+.diploma img {
+  background: #0a3a26;
+}
+.footer__legal {
+  color: #9cbca9;
 }
 
 
