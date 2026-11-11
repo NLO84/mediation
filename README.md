@@ -14,7 +14,7 @@
 index.html          — вся разметка и контент
 assets/
   styles.css        — оформление, адаптивность, анимации
-  script.js         — меню, прогресс скролла, появление блоков, параллакс, карусель
+  script.js         — меню, прогресс скролла, появление блоков, параллакс, карусель, просмотр фото
   favicon.svg       — иконка сайта
   fonts/            — локальные шрифты Manrope и Unbounded
 ```
@@ -110,12 +110,18 @@ assets/
 тег `#ггрррвшколе`) и `assets/img/gallery-20oct.jpg` (дата «20 октября»,
 тег `#полётнормальный`).
 
+По клику на фотографию открывается полноэкранный просмотр: стрелки листают
+снимки, `Esc`, крестик или клик по тёмному фону закрывают его. Чтобы просмотр
+работал и для новой публикации, оставьте в ней кнопку `gallery-post__open`
+с атрибутом `data-lightbox` — она лежит поверх снимка.
+
 Замените фотографию-заглушку в посте:
 
 ```html
 <article class="gallery-post">
   <div class="photo-slot photo-slot--filled gallery-post__media">
     <img class="photo-slot__img" src="assets/img/speech-1.jpg" alt="Выступление службы медиации" />
+    <button class="gallery-post__open" type="button" data-lightbox aria-label="Увеличить фото"></button>
   </div>
   <div class="gallery-post__meta">
     <span class="gallery-post__date">14 марта</span>

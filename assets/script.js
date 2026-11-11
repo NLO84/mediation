@@ -230,4 +230,113 @@
     document.fonts?.ready?.then(requestCarouselUpdate);
     updateCarousel();
   }
+
+  /* Fullscreen gallery photo viewer */
+  const lightboxButtons = Array.from(document.querySelectorAll("[data-lightbox]"));
+
+  if (lightboxButtons.length) {
+    const lightbox = document.createElement("dialog");
+    lightbox.className = "lightbox";
+    lightbox.setAttribute("aria-label", "Просмотр фотографии");
+    lightbox.innerHTML = `
+      <button class="lightbox__close" type="button" data-lightbox-close aria-label="Закрыть просмотр">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </button>
+      <button class="lightbox__nav lightbox__nav--prev" type="button" data-lightbox-prev aria-label="Предыдущее фото">
+        <svg class="icon" aria-hidden="true"><use href="#icon-chevron"></use></svg>
+      </button>
+      <figure class="lightbox__figure">
+        <img class="lightbox__image" data-lightbox-image alt="" />
+        <figcaption class="lightbox__caption">
+          <span data-lightbox-date></span>
+          <span class="lightbox__tag" data-lightbox-tag></span>
+        </figcaption>
+      </figure>
+      <button class="lightbox__nav lightbox__nav--next" type="button" data-lightbox-next aria-label="Следующее фото">
+        <svg class="icon" aria-hidden="true"><use href="#icon-chevron"></use></svg>
+      </button>
+    `;
+    document.body.appendChild(lightbox);
+
+    const lightboxImage = lightbox.querySelector("[data-lightbox-image]");
+    const lightboxDate = lightbox.querySelector("[data-lightbox-date]");
+    const lightboxTag = lightbox.querySelector("[data-lightbox-tag]");
+    const prevPhoto = lightbox.querySelector("[data-lightbox-prev]");
+    const nextPhoto = lightbox.querySelector("[data-lightbox-next]");
+    const slides = [];
+    let activeSlide = 0;
+
+    const showSlide = (index) => {
+      activeSlide = (index + slides.length) % slides.length;
+      const slide = slides[activeSlide];
+
+      lightboxImage.src = slide.src;
+      lightboxImage.alt = slide.alt;
+      lightboxDate.textContent = slide.date;
+      lightboxTag.textContent = slide.tag;
+      lightboxTag.hidden = !slide.tag;
+
+      const multiple = slides.length > 1;
+      prevPhoto.hidden = !multiple;
+      nextPhoto.hidden = !multiple;
+    };
+
+    const openLightbox = (index) => {
+      showSlide(index);
+      if (typeof lightbox.showModal === "function") {
+        lightbox.showModal();
+      } else {
+        lightbox.setAttribute("open", "");
+      }
+      document.documentElement.classList.add("is-lightbox-open");
+    };
+
+    const closeLightbox = () => {
+      if (typeof lightbox.close === "function") {
+        lightbox.close();
+      } else {
+        lightbox.removeAttribute("open");
+        document.documentElement.classList.remove("is-lightbox-open");
+      }
+    };
+
+    lightboxButtons.forEach((button) => {
+      const post = button.closest(".gallery-post");
+      const image = post?.querySelector("img");
+      if (!image) return;
+
+      slides.push({
+        src: image.currentSrc || image.getAttribute("src"),
+        alt: image.getAttribute("alt") || "Фотография",
+        date: post.querySelector(".gallery-post__date")?.textContent.trim() || "",
+        tag: post.querySelector(".gallery-post__tag")?.textContent.trim() || "",
+      });
+
+      const slideIndex = slides.length - 1;
+      button.addEventListener("click", () => openLightbox(slideIndex));
+    });
+
+    lightbox.querySelector("[data-lightbox-close]").addEventListener("click", closeLightbox);
+    prevPhoto.addEventListener("click", () => showSlide(activeSlide - 1));
+    nextPhoto.addEventListener("click", () => showSlide(activeSlide + 1));
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    lightbox.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        showSlide(activeSlide - 1);
+      } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        showSlide(activeSlide + 1);
+      }
+    });
+
+    lightbox.addEventListener("close", () => {
+      document.documentElement.classList.remove("is-lightbox-open");
+      lightboxImage.removeAttribute("src");
+    });
+  }
 })();
